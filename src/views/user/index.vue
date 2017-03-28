@@ -76,7 +76,7 @@ import $ from 'webpack-zepto'
 import utils from '../../libs/utils'
 import { Indicator, Navbar, TabItem } from 'mint-ui'
 import { mapGetters } from 'vuex'
-import vHeader from '../../components/header'
+import vHeader from '../../components/header/header'
 
 export default {
 	data () {

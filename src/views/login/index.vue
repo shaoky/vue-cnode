@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-    	<v-header title="技术社区" :go-back="false"></v-header>
+    	<v-header title="登录" :go-back="false"></v-header>
         <div class="content">
         	<input type="text" name="" placeholder="Access Token" v-model="token">
         	<mt-button type="primary" size="large" style="font-size:16px;" @click="submit">登录</mt-button>
@@ -10,7 +10,6 @@
 
 <script>
 import $ from 'webpack-zepto'
-import vHeader from '../../components/header'
 
 export default {
 	data () {
@@ -43,9 +42,6 @@ export default {
 				}
 			})
 		}
-	},
-	components: {
-		vHeader
 	}
 }
 </script>

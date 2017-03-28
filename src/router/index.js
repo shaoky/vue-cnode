@@ -54,6 +54,13 @@ const routers = [
 		}
 	},
 	{
+		path: '/home',
+		name: 'home',
+		component: (resovle) => {
+			require(['../views/home/index.vue'], resovle)
+		}
+	},
+	{
 		path: '*',
 		name: '404',
 		component: (resovle) => {

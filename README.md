@@ -46,5 +46,5 @@ npm run build
 </pre>
 
 ### 参考资料列表
-https://github.com/shinygang/Vue-cnodejs
+https://github.com/shinygang/Vue-cnodejs<br/>
 https://github.com/hilongjw/vue-zhihu-daily

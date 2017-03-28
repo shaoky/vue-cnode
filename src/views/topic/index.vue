@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-header title="技术社区"></v-header>
+		<v-header title="主题"></v-header>
 		<div class="topic-container" v-if="topic.title">
 			<div class="title">
 				<i class="tag" :class="getTabInfo(topic.tab, topic.good, topic.top, true)">
@@ -52,7 +52,6 @@ import utils from '../../libs/utils'
 import { Indicator } from 'mint-ui'
 import { mapGetters } from 'vuex'
 import reply from './reply'
-import vHeader from '../../components/header'
 
 export default {
 	data () {
@@ -97,7 +96,6 @@ export default {
 		}
 	},
 	components: {
-		vHeader,
 		reply
 	}
 }

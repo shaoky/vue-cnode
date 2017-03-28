@@ -1,29 +1,33 @@
 <template>
-	<div class="index-container">
-		<v-header title="技术社区" :go-back="false"></v-header>
-		<div class="list-box" :style="{ height: GetHeight + 'px' }">
-			<ul class="page-infinite-list list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
-				<li v-for="item in topics" class="page-infinite-listitem">
-					<router-link :to="{name:'topic',params:{id:item.id}}">
-						<div class="img">
-							<img :src="item.author.avatar_url">
-						</div>
-						<div class="content">
-							<div class="title">
-								<i class="tag" :class="getTabInfo(item.tab, item.good, item.top, true)">
-									{{getTabInfo(item.tab, item.good, item.top, false)}}
-								</i>
-								<h2>{{item.title}}</h2>
+	<div>
+		<v-tabs></v-tabs>
+		<div class="index-container">
+			<!-- <v-header title="技术社区" :go-back="false"></v-header> -->
+			<div class="list-box" :style="{ height: GetHeight + 'px' }">
+				<ul class="page-infinite-list list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
+					<li v-for="item in topics" class="page-infinite-listitem">
+						<router-link :to="{name:'topic',params:{id:item.id}}">
+							<div class="img">
+								<img :src="item.author.avatar_url">
 							</div>
-							<div class="author">
-								<span class="name">{{item.author.loginname}}</span>
-								<span class="time">{{item.last_reply_at | getLastTimeStr(true)}}</span>
+							<div class="content">
+								<div class="title">
+									<i class="tag" :class="getTabInfo(item.tab, item.good, item.top, true)">
+										{{getTabInfo(item.tab, item.good, item.top, false)}}
+									</i>
+									<h2>{{item.title}}</h2>
+								</div>
+								<div class="author">
+									<span class="name">{{item.author.loginname}}</span>
+									<span class="time">{{item.last_reply_at | getLastTimeStr(true)}}</span>
+								</div>
 							</div>
-						</div>
-					</router-link>
-				</li>
-			</ul>
+						</router-link>
+					</li>
+				</ul>
+			</div>
 		</div>
+		<v-footer>1</v-footer>
 	</div>
 </template>
 
@@ -31,7 +35,7 @@
 import $ from 'webpack-zepto'
 import utils from '../../libs/utils'
 import { Indicator, InfiniteScroll } from 'mint-ui'
-import vHeader from '../../components/header'
+import vTabs from './tabs'
 
 export default {
 	data () {
@@ -49,10 +53,6 @@ export default {
 			goback: 1
 		}
 	},
-	components: {
-		InfiniteScroll,
-		vHeader
-	},
 	filters: {
 		getLastTimeStr (time, isFromNow) {
 			return utils.getLastTimeStr(time, isFromNow)
@@ -60,7 +60,9 @@ export default {
 	},
 	mounted () {
 		// 容器高度
-		this.GetHeight = document.body.clientHeight - 44
+		this.refresh()
+		window.addEventListener('resize', this.refresh)
+		this.movingWidth = 500
 		// 获取新闻类别
 		if (this.$route.query && this.$route.query.tab) {
 			this.searchKey.tab = this.$route.query.tab
@@ -117,16 +119,23 @@ export default {
 			this.searchKey.limit = 10
 			this.topics = []
 			this.getTopics()
+		},
+		refresh () {
+			this.GetHeight = document.body.clientHeight - 44 - 45
 		}
 	},
 	watch: {
 		'$route': 'fetchData'
+	},
+	components: {
+		InfiniteScroll,
+		vTabs
 	}
 }
 </script>
 <style lang="less">
 	@import '../../assets/less/define.less';
-	.index-container{margin-top: 40px;
+	.index-container{margin-top: 50px;
 		.list-box{height: 450px;overflow: scroll;margin-top: -1px;-webkit-overflow-scrolling: touch;
 			.list{margin-top: @rem*20;padding: 0 @rem*20;min-height: 500px;margin-bottom: 50px;
 				li{background: #fff;border-radius: 5px;box-shadow: 1px 1px 1px 1px #ccc;margin-bottom: @rem*20;
