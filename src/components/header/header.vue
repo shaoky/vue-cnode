@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div>
 		<div class="body-hide" v-if="showMenu" @click="openMenu"></div>
 		<mt-header fixed :title="title">
 			<mt-button icon="back" @click="history" slot="left" v-if="goBack"></mt-button>
@@ -68,3 +68,6 @@ export default {
 	}
 }
 </script>
+<style lang="less">
+	.mint-header{background: #3090e6;}
+</style>

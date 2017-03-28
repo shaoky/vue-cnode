@@ -2,9 +2,8 @@
 	<div>
 		<v-tabs></v-tabs>
 		<div class="index-container">
-			<!-- <v-header title="技术社区" :go-back="false"></v-header> -->
 			<div class="list-box" :style="{ height: GetHeight + 'px' }">
-				<ul class="page-infinite-list list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
+				<ul class="page-infinite-list list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
 					<li v-for="item in topics" class="page-infinite-listitem">
 						<router-link :to="{name:'topic',params:{id:item.id}}">
 							<div class="img">
@@ -73,9 +72,9 @@ export default {
 			this.topics = JSON.parse(window.window.sessionStorage.topics)
 			this.searchKey = JSON.parse(window.window.sessionStorage.searchKey)
 			this.$nextTick(() => $('.list-box').scrollTop(window.window.sessionStorage.scrollTop))
-		}/* else {
+		} else {
 			this.getTopics()
-		} */
+		}
 		for (let i = 1; i <= 20; i++) {
 			this.list.push(i)
 		}
@@ -121,7 +120,7 @@ export default {
 			this.getTopics()
 		},
 		refresh () {
-			this.GetHeight = document.body.clientHeight - 44 - 45
+			this.GetHeight = document.body.clientHeight - 100
 		}
 	},
 	watch: {
@@ -136,7 +135,7 @@ export default {
 <style lang="less">
 	@import '../../assets/less/define.less';
 	.index-container{margin-top: 50px;
-		.list-box{height: 450px;overflow: scroll;margin-top: -1px;-webkit-overflow-scrolling: touch;
+		.list-box{height: 450px;overflow: scroll;-webkit-overflow-scrolling: touch;
 			.list{margin-top: @rem*20;padding: 0 @rem*20;min-height: 500px;margin-bottom: 50px;
 				li{background: #fff;border-radius: 5px;box-shadow: 1px 1px 1px 1px #ccc;margin-bottom: @rem*20;
 					a{display: flex;

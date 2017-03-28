@@ -53,6 +53,7 @@ export default {
 	mounted () {
 		this.refresh()
 		window.addEventListener('resize', this.refresh)
+		$('.nav ul li').eq(0).addClass('active')
 	},
 	methods: {
 		navClick (index) {
