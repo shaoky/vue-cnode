@@ -1,0 +1,69 @@
+@import url(reset.less);/*重置浏览器样式*/
+@import url(iconfont.css);
+@import url(define.less);
+[v-cloak]{
+	display: none!important;
+}
+/*公共部分*/
+body{font-family: "sans-serif";background: #f3f3f3;color: #333333;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.wrap{min-width: 320px;max-width: 750px;margin: 0 auto;overflow-x: hidden;}
+
+.mint-header{
+	.mint-header-title{font-size: 16px;}
+	.mint-button{height: 40px;}
+}
+
+.sidebar{position: fixed;right: 0;top:0;z-index: 99;bottom: 0;width: 200px;background: #fff;transition: all 0.5s ease 0s;transform: translateX(200px);
+	&.show{transform: translateX(0);}
+	.user-login{display: flex;padding: @rem*45 @rem*35;font-size: 14px;align-items:center;
+		.icon{display: block;width:24px;height: 24px;background: url(../images/login_icon.png) no-repeat;background-size: 24px 24px;margin-right: 10px;}
+		.pic{width: 40px;height: 40px;margin-right: 10px;
+			img{width: 40px;height: 40px;display: block;border-radius: 20px;}
+		}
+		.title{}
+	}
+	.list{padding-top: @rem*20;margin: 0 @rem*35; border-top: 1px solid #d4d4d4;
+		li{padding: 0 @rem*5;
+			&.topline{border-top: 1px solid #d4d4d4;}
+			a{.font-dpr(14);display: block;color: #313131;padding: @rem*20 0;}
+		}
+	}
+}
+
+.body-hide{position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0,0,0,.6);z-index: 99;
+	&.show{}
+}
+
+.tag{margin-right: @rem*10;color: #fff;padding: 2px 6px;.font-dpr(10);background: #e7e7e7;text-align: center;border-radius: 4px;display: inline-block;position: absolute;left: 0;top: -1px;
+	&.top{background: #e67e22;}
+	&.good{background: #e74c3c;}
+	&.share{background: #1abc9c;}
+	&.ask{background: #3498db;}
+	&.job{background: #9b59b6;}
+}
+
+/*层楼回复*/
+.reply-list{margin-top: @rem*20;
+	>ul{
+		>li{display: flex;border-bottom: 1px solid #eee;padding: @rem*15 0;position: relative;padding: @rem*15 @rem*20;
+			>a{width: 40px;height: 40px;display: block;
+				img{width: 100%;height: 100%;border-radius: 50%;}
+			}
+			.reply-content{flex: 1;margin-left: @rem*40;overflow: hidden;
+				.reply-info{
+					.reply-author{.font-dpr(16);
+						a{color: #333;}
+					}
+					.reply-time{color: #9fa1a0;margin-top: @rem*5;display: flex;.font-dpr(12);
+						.reply-time-left{flex: 1}
+					}
+				}
+				.reply-text{margin-top: @rem*30;.font-dpr(14);line-height: 1.3;
+					img{margin: 5px 0;}
+				}
+			}
+			.reply-floor{position: absolute;right: @rem*20;top: 10px;}
+			&:last-child{border-bottom: none;}
+		}
+	}
+}
