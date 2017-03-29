@@ -1,8 +1,8 @@
 <template>
-	<div>
+	<div class="container" style="bottom: 0;">
 		<v-header title="用户信息"></v-header>
 		<div class="user-container" v-if="user.loginname">
-			<div class="user-out" @click="outUser" v-if="curUserVisible">安全退出</div>
+			<!-- <div class="user-out" @click="outUser" v-if="curUserVisible">安全退出</div> -->
 			<img :src="user.avatar_url" class="picture">
 			<span class="user-name">{{user.loginname}}</span>
 			<div class="user-info">
@@ -99,7 +99,7 @@ export default {
 	},
 	mounted () {
 		this.getUser()
-		this.curUser()
+		// this.curUser()
 	},
 	methods: {
 		getUser () {
@@ -116,15 +116,15 @@ export default {
 			this.$router.push({
 				path: '/'
 			})
-		},
-		curUser () {
-			this.loginname === this.userInfo.loginname ? this.curUserVisible = true : this.curUserVisible = false
 		}
+		// curUser () {
+		// 	this.loginname === this.userInfo.loginname ? this.curUserVisible = true : this.curUserVisible = false
+		// }
 	},
 	watch: {
 		'$route' (to, from) {
 			this.getUser()
-			this.curUser()
+			// this.curUser()
 		}
 	},
 	components: {
@@ -135,7 +135,7 @@ export default {
 
 <style lang="less">
 	@import '../../assets/less/define.less';
-	.user-container{position: relative; margin-top: 50px; background: #f3f3f3;
+	.user-container{position: relative; background: #f3f3f3;
 		.user-out{position: absolute; right: 15px; top: 50px; .font-dpr(12);}
 		.picture{display: block; width: 100px; height: 100px; margin: 0 auto; margin-top: @rem*30; border-radius: 50%;}
 		.user-name{display: block; margin-top: @rem*10; text-align: center; .font-dpr(14);}

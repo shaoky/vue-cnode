@@ -61,6 +61,13 @@ const routers = [
 		}
 	},
 	{
+		path: '/message',
+		name: 'message',
+		component: (resovle) => {
+			require(['../views/message/index.vue'], resovle)
+		}
+	},
+	{
 		path: '*',
 		name: '404',
 		component: (resovle) => {

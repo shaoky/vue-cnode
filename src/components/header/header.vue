@@ -1,11 +1,10 @@
 <template>
-	<div>
-		<div class="body-hide" v-if="showMenu" @click="openMenu"></div>
+		<!-- <div class="body-hide" v-if="showMenu" @click="openMenu"></div> -->
 		<mt-header fixed :title="title">
 			<mt-button icon="back" @click="history" slot="left" v-if="goBack"></mt-button>
-			<mt-button icon="more" slot="right" @click="openMenu"></mt-button>
+			<!-- <mt-button icon="more" slot="right" @click="openMenu"></mt-button> -->
 		</mt-header>
-		<div class="sidebar" :class="{'show':showMenu}">
+		<!-- <div class="sidebar" :class="{'show':showMenu}">
 			<user-login @callback="openMenu"></user-login>
 			<ul class="list">
 				<li @click="openNav">
@@ -27,8 +26,7 @@
 					<router-link :to="{'name':'about'}" class="icon-about iconfont item">关于</router-link>
 				</li>
 			</ul>
-		</div>
-	</div>
+		</div> -->
 </template>
 
 <script>

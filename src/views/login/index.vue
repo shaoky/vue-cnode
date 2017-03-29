@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-    	<v-header title="登录" :go-back="false"></v-header>
+    	<v-header title="登录"></v-header>
         <div class="content">
         	<input type="text" name="" placeholder="Access Token" v-model="token">
         	<mt-button type="primary" size="large" style="font-size:16px;" @click="submit">登录</mt-button>
@@ -51,5 +51,6 @@ export default {
 		.content{padding: 50px 15px;
 			input{width: 100%;border:none;border-bottom: 1px solid #ccc;padding: 12px 0;font-size: 14px;margin-bottom: 15px;}
 		}
+		.mint-button--primary{background: #3090e6;}
 	}
 </style>

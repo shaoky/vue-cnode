@@ -26,18 +26,18 @@ export default {
 					icon: 'icon-shouye-xianxing',
 					iconActive: 'icon-shouye'
 				},
-				{
-					title: '发表',
-					path: '/1',
-					icon: 'icon-bianjishuru-xianxing',
-					iconActive: 'icon-bianjishuru'
-				},
-				{
-					title: '消息',
-					path: '/1',
-					icon: 'icon-xin-xianxing',
-					iconActive: 'icon-xin'
-				},
+				// {
+				// 	title: '发表',
+				// 	path: '/1',
+				// 	icon: 'icon-bianjishuru-xianxing',
+				// 	iconActive: 'icon-bianjishuru'
+				// },
+				// {
+				// 	title: '消息',
+				// 	path: '/1',
+				// 	icon: 'icon-xin-xianxing',
+				// 	iconActive: 'icon-xin'
+				// },
 				{
 					title: '我的',
 					path: '/home',

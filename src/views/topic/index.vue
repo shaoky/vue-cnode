@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container" style="bottom: 0;">
 		<v-header title="主题"></v-header>
 		<div class="topic-container" v-if="topic.title">
 			<div class="title">
@@ -102,7 +102,7 @@ export default {
 </script>
 <style lang="less">
 	@import '../../assets/less/define.less';
-	.topic-container{background: #fff;padding-top: @rem*20;margin-top: 40px;
+	.topic-container{background: #fff;padding-top: @rem*20;
 		.title{.font-dpr(18);position: relative;margin: 0 @rem*20;
 			.tag{padding: 3px 6px;.font-dpr(12);}
 			h2{text-indent: 43px;}
