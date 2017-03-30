@@ -18,10 +18,10 @@
 					{{topic.author.loginname}}<br/>
 					发布于：{{getLastTimeStr}}
 				</div>
-				<span class="number">{{topic.visit_count}} 次浏览</span>
+				<span class="number"><!-- {{topic.visit_count}} 次浏览</br/> --><mt-button type="primary" size="small" style="font-size:16px;">收藏</mt-button></span>
 			</div>
 			<div class="content" v-html="topic.content"></div>
-			<div class="reply">
+			<div class="reply" id="reply">
 				新鲜评论<i>({{topic.reply_count}})</i>
 			</div>
 			<div class="reply-list">

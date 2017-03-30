@@ -76,6 +76,13 @@
 							<i class="iconfont icon-arrow"></i>
 						</router-link>
 					</li>
+					<li>
+						<router-link to="/collect">
+							<i class="icon iconfont icon-shoucang"></i>
+							<div class="title">我的收藏</div>
+							<i class="iconfont icon-arrow"></i>
+						</router-link>
+					</li>
 				</ul>
 			</div>
 			<div class="bar-container">
@@ -189,6 +196,7 @@ export default {
 			.icon-bianjishuru{color: #f7593e;}
 			.icon-xin{color: #369bf7;}
 			.icon-xinxi-yuankuang{color: #888;}
+			.icon-shoucang{color: #dbd350;}
 		}
 		.home-out{margin-top: @rem*20; color: #f00;background: #fff;height: @rem*80;line-height: @rem*80;text-align: center;.font-dpr(16);}
 	}

@@ -64,7 +64,14 @@ const routers = [
 		path: '/message',
 		name: 'message',
 		component: (resovle) => {
-			require(['../views/message/index.vue'], resovle)
+			require(['../views/home/message.vue'], resovle)
+		}
+	},
+	{
+		path: '/collect',
+		name: 'collect',
+		component: (resovle) => {
+			require(['../views/home/collect.vue'], resovle)
 		}
 	},
 	{
