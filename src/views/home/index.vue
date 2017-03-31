@@ -70,14 +70,14 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="/message">
+						<router-link to="/home/message">
 							<i class="icon iconfont icon-xin"></i>
 							<div class="title">我的消息</div>
 							<i class="iconfont icon-arrow"></i>
 						</router-link>
 					</li>
 					<li>
-						<router-link to="/collect">
+						<router-link to="/home/collect">
 							<i class="icon iconfont icon-shoucang"></i>
 							<div class="title">我的收藏</div>
 							<i class="iconfont icon-arrow"></i>

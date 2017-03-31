@@ -18,10 +18,14 @@
 					{{topic.author.loginname}}<br/>
 					发布于：{{getLastTimeStr}}
 				</div>
-				<span class="number"><!-- {{topic.visit_count}} 次浏览</br/> --><mt-button type="primary" size="small" style="font-size:16px;">收藏</mt-button></span>
+				<span class="number">
+					<!-- {{topic.visit_count}} 次浏览</br/> -->
+					<mt-button type="primary" size="small" style="font-size:16px;" @click.native="collect" v-if="!topic.is_collect">收藏</mt-button>
+					<mt-button type="default" size="small" style="font-size:16px;" @click.native="delCollect" v-if="topic.is_collect">取消收藏</mt-button>
+				</span>
 			</div>
 			<div class="content" v-html="topic.content"></div>
-			<div class="reply" id="reply">
+			<div class="reply" ref="reply">
 				新鲜评论<i>({{topic.reply_count}})</i>
 			</div>
 			<div class="reply-list">
@@ -61,7 +65,7 @@ export default {
 				replies: {}
 			},
 			topicId: null,
-			a: null
+			hash: null
 		}
 	},
 	filters: {
@@ -78,20 +82,83 @@ export default {
 		})
 	},
 	mounted () {
-		this.getData()
+		// 判断是否直接看评论
+		let hash = this.$router.history.current.hash
+		if (hash) {
+			this.getData(false)
+		} else {
+			Indicator.open()
+			this.getData(true)
+		}
+		this.$nextTick(function () {
+			if (hash) {
+				let goReply = this.$refs.reply.offsetTop
+				$('.container').scrollTop(goReply)
+			}
+		})
 	},
 	methods: {
 		getTabInfo (tab, good, top, isClass) {
 			return utils.getTabInfo(tab, good, top, isClass)
 		},
-		getData () {
-			Indicator.open()
-			// 获取url传的tab参数
+		getData (isAsync) {
 			this.topicId = this.$route.params.id
-			// 加载主题数据
-			$.get('https://cnodejs.org/api/v1/topic/' + this.topicId, (res) => {
-				this.topic = res.data
-				Indicator.close()
+			$.ajax({
+				type: 'GET',
+				url: `https://cnodejs.org/api/v1/topic/${this.topicId}`,
+				data: {
+					accesstoken: this.userInfo.token
+				},
+				dataType: 'json',
+				async: isAsync,
+				success: (res) => {
+					this.topic = res.data
+					Indicator.close()
+				},
+				error: (res) => {
+					let error = JSON.parse(res.responseText)
+					this.$toast(error.error_msg)
+				}
+			})
+		},
+		collect () {
+			if (!this.userInfo.token) {
+				this.$router.push('/login')
+				return false
+			}
+			$.ajax({
+				type: 'POST',
+				url: 'https://cnodejs.org/api/v1/topic_collect/collect',
+				data: {
+					accesstoken: this.userInfo.token,
+					topic_id: this.topic.id
+				},
+				dataType: 'json',
+				success: (res) => {
+					this.topic.is_collect = true
+				},
+				error: (res) => {
+					let error = JSON.parse(res.responseText)
+					this.$toast(error.error_msg)
+				}
+			})
+		},
+		delCollect () {
+			$.ajax({
+				type: 'POST',
+				url: 'https://cnodejs.org/api/v1/topic_collect/de_collect',
+				data: {
+					accesstoken: this.userInfo.token,
+					topic_id: this.topic.id
+				},
+				dataType: 'json',
+				success: (res) => {
+					this.topic.is_collect = false
+				},
+				error: (res) => {
+					let error = JSON.parse(res.responseText)
+					this.$toast(error.error_msg)
+				}
 			})
 		}
 	},

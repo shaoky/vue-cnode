@@ -24,20 +24,19 @@
 						<div class="collect-content">
 							<router-link :to="{name: 'topic', params: {id: item.id}}">
 								<div class="collect-title">{{item.title}}</div>
-								<div class="collect-text" v-html="item.content"></div>
+								<div class="collect-text" v-text="item.content"></div>
 							</router-link>
 						</div>
 						<div class="collect-changes">
-							<span><i>1111</i>浏览</span>
+							<span><i>{{item.visit_count}}</i>浏览</span>
 							<span>·</span>
-							<span>
-								<a :href="'/topic/' + item.id + '#reply'">
-									<i>2</i>评论
-								</a>	
+							<span @click="goReply(item.id)">
+								<i>{{item.reply_count}}</i>评论
 							</span>
 						</div>
 					</li>
 				</ul>
+			</div>	
 		</div>
 	</div>
 </template>
@@ -95,6 +94,9 @@ export default {
 					}
 				})
 			})
+		},
+		goReply (id) {
+			this.$router.push(`/topic/${id}#reply`)
 		}
 	}
 }

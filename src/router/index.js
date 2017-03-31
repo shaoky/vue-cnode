@@ -61,14 +61,14 @@ const routers = [
 		}
 	},
 	{
-		path: '/message',
+		path: '/home/message',
 		name: 'message',
 		component: (resovle) => {
 			require(['../views/home/message.vue'], resovle)
 		}
 	},
 	{
-		path: '/collect',
+		path: '/home/collect',
 		name: 'collect',
 		component: (resovle) => {
 			require(['../views/home/collect.vue'], resovle)
