@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
-
+/**
+ * auth = true 则需要登录
+ */
 const routers = [
 	{
 		path: '/community',	// 此路由供线上,二级目录使用
@@ -63,6 +65,7 @@ const routers = [
 	{
 		path: '/home/message',
 		name: 'message',
+		meta: { auth: true },
 		component: (resovle) => {
 			require(['../views/home/message.vue'], resovle)
 		}
@@ -70,6 +73,7 @@ const routers = [
 	{
 		path: '/home/collect',
 		name: 'collect',
+		meta: { auth: true },
 		component: (resovle) => {
 			require(['../views/home/collect.vue'], resovle)
 		}

@@ -1,7 +1,7 @@
 <template>
 	<div class="container" style="bottom: 0;">
 		<v-header title="我的收藏"></v-header>
-		<div class="collect-container">
+		<div class="collect-container" v-if="data.length">
 			<div class="collect-edit">
 				<span class="count"><i>{{data.length}}</i>篇收藏</span>
 			</div>
@@ -9,11 +9,11 @@
 				<ul>
 					<li v-for="(item ,index) in data">
 						<div class="collect-author">
-							<router-link :to="{name:'user', params: {loginname: item.author.loginname}}">
+							<router-link :to="'/user/' + item.author.loginname">
 								<img :src="item.author.avatar_url"/>
 							</router-link>
 							<div class="collect-name">
-								<router-link :to="{name:'user', params: {loginname: item.author.loginname}}">
+								<router-link :to="'/user/' + item.author.loginname">
 									{{item.author.loginname}}
 								</router-link>
 							</div>
@@ -22,7 +22,7 @@
 							</div>
 						</div>
 						<div class="collect-content">
-							<router-link :to="{name: 'topic', params: {id: item.id}}">
+							<router-link :to="'/topic/' + item.id">
 								<div class="collect-title">{{item.title}}</div>
 								<div class="collect-text" v-text="item.content"></div>
 							</router-link>
@@ -30,8 +30,10 @@
 						<div class="collect-changes">
 							<span><i>{{item.visit_count}}</i>浏览</span>
 							<span>·</span>
-							<span @click="goReply(item.id)">
-								<i>{{item.reply_count}}</i>评论
+							<span>
+								<router-link :to="'/topic/' + item.id + '#reply'">
+									<i>{{item.reply_count}}</i>评论
+								</router-link>	
 							</span>
 						</div>
 					</li>
@@ -94,9 +96,6 @@ export default {
 					}
 				})
 			})
-		},
-		goReply (id) {
-			this.$router.push(`/topic/${id}#reply`)
 		}
 	}
 }

@@ -99,7 +99,6 @@ export default {
 	},
 	mounted () {
 		this.getUser()
-		// this.curUser()
 	},
 	methods: {
 		getUser () {
@@ -117,14 +116,10 @@ export default {
 				path: '/'
 			})
 		}
-		// curUser () {
-		// 	this.loginname === this.userInfo.loginname ? this.curUserVisible = true : this.curUserVisible = false
-		// }
 	},
 	watch: {
 		'$route' (to, from) {
 			this.getUser()
-			// this.curUser()
 		}
 	},
 	components: {

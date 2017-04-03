@@ -35,7 +35,7 @@
 			<div class="home-info">
 				<ul>
 					<li>
-						<router-link :to="{name:'user',params:{loginname:userInfo.loginname}}">
+						<router-link :to="'/user/' + userInfo.loginname + '#1'">
 							<span class="num orange">
 								<i>{{ userInfo.loginname ? user.recent_replies.length : 0 }}</i>条
 							</span>
@@ -43,7 +43,7 @@
 						</router-link>	
 					</li>
 					<li>
-						<router-link :to="{name:'user',params:{loginname:userInfo.loginname}}">
+						<router-link :to="'/user/' + userInfo.loginname + '#2'">
 							<span class="num red">
 								<i>{{ userInfo.loginname ? user.recent_topics.length : 0 }}</i>个
 							</span>

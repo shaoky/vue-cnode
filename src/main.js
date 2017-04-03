@@ -17,6 +17,21 @@ const router = new VueRouter({
 	mode: 'history'
 })
 
+// 登录验证，没登录的跳转到登录页面，在router设置是否需要登录
+router.beforeEach((to, from, next) => {
+	if (to.meta.auth) {
+		if (store.state.user.userInfo.loginname) {
+			next()
+		} else {
+			next({
+				path: '/login'
+			})
+		}
+	} else {
+		next()
+	}
+})
+
 Vue.component('vHeader', vHeader)
 Vue.component('vFooter', vFooter)
 
