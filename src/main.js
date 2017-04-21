@@ -14,7 +14,8 @@ Vue.use(MintUI)
 
 const router = new VueRouter({
 	routes,
-	mode: 'history'
+	mode: 'history',
+	base: '/mall/'
 })
 
 // 登录验证，没登录的跳转到登录页面，在router设置是否需要登录

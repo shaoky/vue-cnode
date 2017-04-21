@@ -63,7 +63,7 @@
 			<div class="bar-container">
 				<ul>
 					<li>
-						<router-link to="1">
+						<router-link to="/home/publish">
 							<i class="icon iconfont icon-bianjishuru"></i>
 							<div class="title">发表主题</div>
 							<i class="iconfont icon-arrow"></i>

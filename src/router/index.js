@@ -7,6 +7,13 @@ Vue.use(VueRouter)
  */
 const routers = [
 	{
+		path: '/index.html',	// 此路由供线上,二级目录使用
+		name: 'mall',
+		component: (resovle) => {
+			require(['../views/index/list.vue'], resovle)
+		}
+	},
+	{
 		path: '/community',	// 此路由供线上,二级目录使用
 		name: 'community',
 		component: (resovle) => {
@@ -60,6 +67,14 @@ const routers = [
 		name: 'home',
 		component: (resovle) => {
 			require(['../views/home/index.vue'], resovle)
+		}
+	},
+	{
+		path: '/home/publish',
+		name: 'publish',
+		meta: { auth: true },
+		component: (resovle) => {
+			require(['../views/home/publish.vue'], resovle)
 		}
 	},
 	{
