@@ -1,4 +1,4 @@
-## 基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://www.shaoky.com/community/)
+## 基于vue.js重写Cnodejs.org社区的webapp 
 
 > 项目采用vue-cli构建，加入[Mint-ui](http://mint-ui.github.io/#!/zh-cn)
 
